@@ -4,8 +4,24 @@ import itemData from "../data/items";
 
 function App() {
 
-  // replace 'false' with a state variable that can be toggled between true and false
-  // this will be used for the Dark Mode Toggle feature
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  };
+
+  return (
+    <div className={isDarkMode ? 'app dark-mode' : 'app light-mode'}>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      </button>
+      {/* Other app content */}
+    </div>
+     );
+    }
+    
+
+
   const appClass = false ? "App dark" : "App light"
 
   return (
@@ -16,7 +32,8 @@ function App() {
       </header>
       <ShoppingList items={itemData} />
     </div>
+
   );
-}
+
 
 export default App;

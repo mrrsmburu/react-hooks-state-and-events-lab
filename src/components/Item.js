@@ -1,4 +1,4 @@
-import React from "react";
+import React, {userstate} from "react";
 
 function Item({ name, category }) {
   return (
@@ -9,5 +9,23 @@ function Item({ name, category }) {
     </li>
   );
 }
+  const [inCart, setInCart] = useState(false);
+
+  const handleButtonClick = () => {
+    setInCart(!inCart);
+  };
+
+  return (
+    <div>
+      <li className={inCart ? "in-cart" : ""}>
+        {/* the item is in the cart */}
+      </li>
+      <button onClick={handleButtonClick}>
+        {inCart ? "Remove From Cart" : "Add to Cart"}
+      </button>
+    </div>
+    );
+  
+  
 
 export default Item;
